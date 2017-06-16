@@ -1,0 +1,26 @@
+[
+  {
+    "type": "string",
+    "title": "Wifi SSID",
+    "desc": "Name of the Wifi network to connect to",
+    "section": "Web",
+    "key": "wifi_ssid",
+    "settings_lite": "0"
+  },
+  {
+    "type": "string",
+    "title": "Wifi Password",
+    "desc": "Wifi password (WPA)",
+    "section": "Web",
+    "key": "wifi_pass",
+    "settings_lite": "0"
+  },
+  {
+    "type": "string",
+    "title": "Event name",
+    "desc": "The name of your event. This creates a new online folder for your photos.",
+    "section": "Web",
+    "key": "event_name",
+    "settings_lite": "0"
+  }
+]

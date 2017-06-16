@@ -1,0 +1,146 @@
+
+<MainMenuScreen>:
+	FloatLayout:
+		canvas.before:
+			Rectangle:
+				pos: self.pos
+				size: self.size
+				source: 'img/background.jpg'
+		Button:
+			text: 'Start\nPhotobooth'
+			font_size: 40
+			halign: 'center'
+			size_hint: 0.4, 0.4
+			pos_hint: {'x':0.08, 'y':0.3}
+			on_release:
+				root.manager.transition.direction = 'left'
+				root.manager.current = 'photobooth'
+		Button:
+			text: 'View\nPhotos'
+			font_size: 40
+			halign: 'center'
+			size_hint: 0.4, 0.4
+			pos_hint: {'x':0.52, 'y':0.3}
+			on_release:
+				root.manager.transition.direction = 'left'
+				root.manager.current = 'photoviewer'
+		Button:
+			text: 'Settings'
+			font_size: 16
+			size_hint: 0.1, 0.07
+			pos_hint: {'x':0.65, 'y':0.05}
+			on_release:
+				root.manager.transition.direction = 'left'
+				app.open_settings()
+		Button:
+			text: 'Reboot'
+			font_size: 16
+			size_hint: 0.1, 0.07
+			pos_hint: {'x':0.75, 'y':0.05}
+			on_release:
+				app.reboot()
+		Button:
+			text: 'Shutdown'
+			font_size: 16
+			size_hint: 0.1, 0.07
+			pos_hint: {'x':0.85, 'y':0.05}
+			on_release:
+				app.shutdown()
+
+<PhotoboothScreen>:
+	FloatLayout:
+		Button:
+			text: 'Settings'
+			font_size: 30
+			size_hint: 0.2, 0.2
+			pos_hint: {'x':0.8, 'y':0.8}
+			on_release:
+				root.manager.transition.direction = 'up'
+				root.manager.current = 'settings_lite'
+		Button:
+			text: 'Take\nPhotos'
+			id: take_photo_button
+			font_size: 36
+			size_hint: 0.2, 0.6
+			pos_hint: {'x':0.8, 'y':0.2}
+			on_release:
+				root.manager.transition.direction = 'up'
+				root.manager.current = 'photobooth_sequence'
+		Button:
+			text: 'Main\nMenu'
+			font_size: 30
+			size_hint: 0.2, 0.2
+			pos_hint: {'x':0.8, 'y':0.0}
+			on_release:
+				root.manager.transition.direction = 'right'
+				root.manager.current = 'mainmenu'
+
+<PhotoboothSequenceScreen>:
+	on_enter:
+		root.take_photo_init()
+	FloatLayout:
+		Label:
+			id: countdown_label
+			text: ''
+			font_size: 42
+			size_hint: 0.2, 0.2
+			pos_hint: {'x':0.8, 'y':0.7}
+		AsyncImage:
+			id: countdown_img
+			allow_stretch: True
+			source: ''
+			size_hint: 0.2, 0.5
+			pos_hint: {'x':0.8, 'y':0.1}
+		Button:
+			text: 'Stop'
+			font_size: 30
+			size_hint: 0.2, 0.1
+			pos_hint: {'x':0.8, 'y':0.0}
+			on_release:
+				root.manager.transition.direction = 'down'
+				root.manager.current = 'photobooth'
+
+
+<PhotoviewerScreen>:
+	FloatLayout:
+		Label:
+			text: 'View Online:'
+			font_size: 24
+			size_hint: 0.2, 0.1
+			pos_hint: {'x':0.8, 'y':0.9}
+		Image:
+			id: qr_code
+			source: 'img/qr.jpg'
+			size_hint: 0.2, 0.3
+			pos_hint: {'x':0.8, 'y':0.6}
+		Button:
+			id: prev_button
+			text: 'Previous\n  Page'
+			font_size: 30
+			size_hint: 0.2, 0.2
+			pos_hint: {'x':0.8, 'y':0.4}
+			disabled: True
+			on_release: root.prev_page()
+		Button:
+			id: next_button
+			text: 'Next\nPage'
+			font_size: 30
+			size_hint: 0.2, 0.2
+			pos_hint: {'x':0.8, 'y':0.2}
+			on_release: root.next_page()
+		Button:
+			text: 'Main\nMenu'
+			font_size: 30
+			size_hint: 0.2, 0.2
+			pos_hint: {'x':0.8, 'y':0.0}
+			on_release:
+				root.manager.transition.direction = 'right'
+				root.manager.current = 'mainmenu'
+		GridLayout:
+			id: picGrid
+			size_hint: 0.8, 1.0
+            cols: 2
+            row_default_height: '250dp'
+            row_force_default: True
+            spacing: 5, 5
+            padding: 0, 0

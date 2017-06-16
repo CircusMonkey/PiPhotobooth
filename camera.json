@@ -1,0 +1,195 @@
+[
+	{
+		"type": "bool",
+		"title": "Flash",
+		"desc": "Turns the flash on while taking a photo",
+		"section": "Camera",
+		"key": "flash_enabled",
+		"settings_lite": "1"
+	},
+	{
+		"type": "bool",
+		"title": "Flash\nalways on",
+		"desc": "Keeps the pre-flash on all the time.",
+		"section": "Camera",
+		"key": "flash_always_on",
+		"settings_lite": "1"
+	},
+	{
+		"type": "numeric",
+		"title": "Pre-flash\nbrightness",
+		"desc": "Brightness of flash before the flash 0-100",
+		"section": "Camera",
+		"key": "pre_flash",
+		"min": "0",
+		"max": "100",
+		"default": "20",
+		"settings_lite": "0"
+	},
+	{
+		"type": "numeric",
+		"title": "Number\nof photos",
+		"desc": "Sets the number of images catured in the sequence",
+		"section": "Camera",
+		"key": "photo_count",
+		"min": "1",
+		"max": "10",
+		"default": "3",
+		"settings_lite": "1"
+	},
+	{
+		"type": "numeric",
+		"title": "Photo\ntimer",
+		"desc": "Sets the timer to countdown before taking each picture",
+		"section": "Camera",
+		"key": "photo_timer",
+		"min": "0",
+		"max": "10",
+		"default": "5",
+		"settings_lite": "1"
+	},
+	{
+		"type": "options",
+		"title": "Camera\nresolution",
+		"desc": "Sets the resolution at which images will be captured.",
+		"section": "Camera",
+		"key": "camera.resolution",
+		"options": ["2592x1944", "1920x1080", "1296x972", "1296x730", "640x480"],
+		"settings_lite": "0"
+	},
+	{
+		"type": "numeric",
+		"title": "Sharpness",
+		"desc": "Adjust the sharpness. Choose a value between -100 and 100 (Default: 0)",
+		"section": "Camera",
+		"key": "camera.sharpness",
+		"min": "-100",
+		"max": "100",
+		"default": "0",
+		"settings_lite": "0"
+	},
+	{
+		"type": "numeric",
+		"title": "Contrast",
+		"desc": "Adjust the contrast. Choose a value between -100 and 100 (Default: 0)",
+		"section": "Camera",
+		"key": "camera.contrast",
+		"min": "-100",
+		"max": "100",
+		"default": "0",
+		"settings_lite": "0"
+	},
+	{
+		"type": "numeric",
+		"title": "Brightness",
+		"desc": "Adjust the brightness. Choose a value between 0 and 100 (Default: 50)",
+		"section": "Camera",
+		"key": "camera.brightness",
+		"min": "0",
+		"max": "100",
+		"default": "50",
+		"settings_lite": "0"
+	},
+	{
+		"type": "numeric",
+		"title": "Saturation",
+		"desc": "Adjust the saturation. Choose a value between -100 and 100 (Default: 0)",
+		"section": "Camera",
+		"key": "camera.saturation",
+		"min": "-100",
+		"max": "100",
+		"default": "0",
+		"settings_lite": "0"
+	},
+	{
+		"type": "numeric",
+		"title": "ISO",
+		"desc": "Adjust the value of ISO. Choose a value between 0 and 800 (Default: 0-Auto)",
+		"section": "Camera",
+		"key": "camera.iso",
+		"min": "0",
+		"max": "800",
+		"default": "0",
+		"settings_lite": "0"
+	},
+	{
+		"type": "bool",
+		"title": "Video\nStabilisation",
+		"desc": "Enable video stabilisation",
+		"section": "Camera",
+		"key": "camera.video_stabilization",
+		"settings_lite": "0"
+	},
+	{
+		"type": "numeric",
+		"title": "Exposure\nCompensation",
+		"desc": "Adjust the exposure compensation level. Choose a value between -25 and 25 (Default: 0)",
+		"section": "Camera",
+		"key": "camera.exposure_compensation",
+		"min": "-25",
+		"max": "25",
+		"default": "0",
+		"settings_lite": "0"
+	},
+	{
+		"type": "options",
+		"title": "Exposure\nMode",
+		"desc": "Choose an exposure mode (Default: auto)",
+		"section": "Camera",
+		"key": "camera.exposure_mode",
+		"options": ["off", "auto", "night", "nightpreview", "backlight", "spotlight", "sports", "snow", "beach", "verylong", "fixedfps", "antishake", "fireworks"],
+		"settings_lite": "0"
+	},
+	{
+		"type": "options",
+		"title": "Meter\nMode",
+		"desc": "Choose the camera’s metering mode. All modes set up two regions: a center region, and an outer region. The major difference between each mode is the size of the center region.",
+		"section": "Camera",
+		"key": "camera.meter_mode",
+		"options": ["average", "spot", "backlit", "matrix"],
+		"settings_lite": "0"
+	},
+	{
+		"type": "options",
+		"title": "Auto-White\n-Balance",
+		"desc": "Adjust the camera’s auto-white-balance mode",
+		"section": "Camera",
+		"key": "camera.awb_mode",
+		"options": ["off", "auto", "sunlight", "cloudy", "shade", "tungsten", "fluorescent", "incandescent", "flash", "horizon"],
+		"settings_lite": "0"
+	},
+	{
+		"type": "options",
+		"title": "Image\nEffect",
+		"desc": "Choose an image effect",
+		"section": "Camera",
+		"key": "camera.image_effect",
+		"options": ["none", "negative", "solarize", "sketch", "denoise", "emboss", "oilpaint", "hatch", "gpen", "pastel", "watercolor", "film", "blur", "saturation", "colorswap", "washedout", "posterise", "colorpoint", "colorbalance", "cartoon", "deinterlace1", "deinterlace2"],
+		"settings_lite": "0"
+	},
+	{
+		"type": "options",
+		"title": "Rotation",
+		"desc": "Adjust the camera’s rotation (Default: 0)",
+		"section": "Camera",
+		"key": "camera.rotation",
+		"options": ["0", "90", "180", "270"],
+		"settings_lite": "0"
+	},
+	{
+		"type": "bool",
+		"title": "Horizontal\nFlip",
+		"desc": "Flip the camera horizontally",
+		"section": "Camera",
+		"key": "camera.hflip",
+		"settings_lite": "0"
+	},
+	{
+		"type": "bool",
+		"title": "Vertical\nFlip",
+		"desc": "Flip the camera vertically",
+		"section": "Camera",
+		"key": "camera.vflip",
+		"settings_lite": "0"
+	}
+]
