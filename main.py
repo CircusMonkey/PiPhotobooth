@@ -1,5 +1,3 @@
-#!/usr/bin/python
-
 """
 PiPhotobooth
 """
@@ -29,6 +27,8 @@ import sys
 from time import sleep
 
 # Kivy modules
+import os
+os.environ['KIVY_GL_BACKEND'] = 'gl' # Fix for segfault on raspbian stretch
 from kivy.app import App
 from kivy.uix.settings import SettingsWithSidebar
 from kivy.uix.screenmanager import ScreenManager, Screen
