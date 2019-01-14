@@ -29,6 +29,8 @@ from time import sleep
 # Kivy modules
 import os
 os.environ['KIVY_GL_BACKEND'] = 'gl' # Fix for segfault on raspbian stretch
+from kivy.config import Config
+Config.set('kivy', 'keyboard_mode', 'systemandmulti')
 from kivy.app import App
 from kivy.uix.settings import SettingsWithSidebar
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -36,8 +38,6 @@ from kivy.uix.button import Button
 from kivy.logger import Logger
 from kivy.lang import Builder
 from kivy.core.window import Window
-from kivy.config import Config
-Config.set('kivy', 'keyboard_mode', 'systemandmulti')
 
 # Import custom modules
 import globals_
