@@ -28,7 +28,7 @@ try:
     import picamera
     import RPi.GPIO as GPIO
 except:
-    print "Error: Couldn't import picamera or RPi.GPIO"
+    print("Error: Couldn't import picamera or RPi.GPIO")
 
 # Kivy modules
 from kivy.uix.screenmanager import Screen
@@ -58,7 +58,7 @@ class PhotoboothScreen(Screen):
         try:
             threading.Thread(target = enable_camera).start()
         except:
-            print 'Error: Could not initialise camera'
+            print('Error: Could not initialise camera')
 
 
 class PhotoboothSequenceScreen(Screen):
@@ -138,22 +138,21 @@ class SettingsLiteScreen(Screen):
         '''
         Change the setting of the switch that is toggled.
         '''
-        print "Setting {0} to {1}".format(key, value)
+        print("Setting {0} to {1}".format(key, value))
         # Convert value variable to required boolean format
         if ("camera." in key):
-			# Change camera setting
-			exec compile('{0} = value'.format(key), '<string>', 'exec')
+            exec(compile('{0} = value'.format(key), '<string>', 'exec'))
         elif value == True:
-			value = 1
+            value = 1
         else:
             value = 0
-		# Write changes to .ini file
+        # Write changes to .ini file
         main_app = main.App.get_running_app()
         main_app.config.set('Camera', key, value)
         main_app.config.write()
 
         if (key == 'flash_always_on'):
-			flash_brightness() # Turns off or on accordingly
+            flash_brightness() # Turns off or on accordingly
 
 
     def settings_lite_button_push(self, instance):
@@ -228,13 +227,13 @@ class SettingsLiteSliderScreen(Screen):
         self.clear_widgets()
 
     def change_setting(self, instance, value):
-        print "Setting {0} to {1}".format(cur_setting['title'], value)
+        print("Setting {0} to {1}".format(cur_setting['title'], value))
         # Special case
         if cur_setting['key'] == 'pre_flash':
-        	flash_brightness(value)
+            flash_brightness(value)
         else:
-			# Change camera setting
-			exec compile('{0} = int(value)'.format(cur_setting['key']), '<string>', 'exec')
+            # Change camera setting
+            exec(compile('{0} = int(value)'.format(cur_setting['key']), '<string>', 'exec'))
 
         # Update label value
         self.label.text='{0}: {1}'.format(cur_setting['title'], int(value))
@@ -289,13 +288,13 @@ class SettingsLiteOptionsScreen(Screen):
 
     def change_setting(self, instance):
 
-        print "Setting {0} to {1}".format(cur_setting['title'], instance.text)
+        print("Setting {0} to {1}".format(cur_setting['title'], instance.text))
 
         # Change the camera setting to the value. Convert to int if required.
         try:
-            exec compile('{0} = instance.text'.format(cur_setting['key']), '<string>', 'exec')
+            exec(compile('{0} = instance.text'.format(cur_setting['key']), '<string>', 'exec'))
         except TypeError:
-            exec compile('{0} = int(instance.text)'.format(cur_setting['key']), '<string>', 'exec')
+            exec(compile('{0} = int(instance.text)'.format(cur_setting['key']), '<string>', 'exec'))
 
         # Write changes to .ini file
 
@@ -315,9 +314,9 @@ def init_pwm(pin):
         globals_.flash = GPIO.PWM(pin, 100) # Pin 21 as PWM @ 100Hz
         # Set initial duty cycle to 0
         globals_.flash.start(0)
-        print "Successfully setup PWM"
+        print("Successfully setup PWM")
     except:
-        print "Error: Could not initialise PWM"
+        print("Error: Could not initialise PWM")
 
 def stop_pwm():
     try:
@@ -341,9 +340,9 @@ def flash_brightness(duty_cycle=0):
     # Change the duty cycle
     try:
         globals_.flash.ChangeDutyCycle(duty_cycle)
-        print "Flash brightness changed to " + str(duty_cycle)
+        print("Flash brightness changed to " + str(duty_cycle))
     except:
-    	print "Error: Could not change flash brightness to " + str(duty_cycle)
+        print("Error: Could not change flash brightness to " + str(duty_cycle))
 
 
 
@@ -370,8 +369,8 @@ def take_photo_pause(seconds):
         sleep(0.1)
         # Check if the screen has changed (stop button has been pressed)
         if globals_.scr_manager.current != 'photobooth_sequence':
-        	flash_brightness(0) # Turn the flash off
-        	return True # To exit the photo sequence
+            flash_brightness(0) # Turn the flash off
+            return True # To exit the photo sequence
     return False # To continue with the photo sequence
 
 def take_photo():
@@ -413,9 +412,9 @@ def take_photo():
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S.%f")
         try:
             camera.capture(stream, format='jpeg')
-            print 'Photo taken'
+            print('Photo taken')
         except:
-            print 'Error: Could not take photo'
+            print('Error: Could not take photo')
 
         # Convert to PILLOW image
         stream.seek(0)
@@ -467,7 +466,7 @@ def enable_camera():
         width = 640
         height = 480
         camera.start_preview(fullscreen=False, window=(x_offset, y_offset, width, height))
-        print "camera enabled"
+        print("camera enabled")
 
         # Keep the preview running while the photobooth screen is current
         while (('photobooth' in main_app.root.current) or ('settings_lite' in main_app.root.current)) and globals_.camera_running:
@@ -479,7 +478,7 @@ def enable_camera():
         print('Camera closed')
 
     except:
-        print "Error: Camera could not be initialised"
+        print("Error: Camera could not be initialised")
 
 
 def configure_camera():
@@ -520,4 +519,4 @@ def configure_camera():
     else:
         camera.vflip = False
 
-    print "camera configured"
+    print("camera configured")

@@ -78,8 +78,8 @@ class PhotoviewerScreen(Screen):
 
         # Get the 4 latest photos
         self.photo_page = 0
-        print "Number of photos in list: " + str(len(self.photo_list))
-        print "Number of pages: " + str(len(self.photo_list) / 4 + 1)
+        print("Number of photos in list: " + str(len(self.photo_list)))
+        print("Number of pages: " + str(len(self.photo_list) / 4 + 1))
         if self.photo_page >= len(self.photo_list) / 4:
             self.ids.next_button.disabled = True
         else:
@@ -141,7 +141,7 @@ class PhotoviewerScreen(Screen):
 Reloads the qr code jpg to the new setting
 '''
 def create_qr_code(text):
-    print "Creating qr code for {0}".format(text)
+    print("Creating qr code for {0}".format(text))
     img = qrcode.make(text)
 
     # Save the image. The Pi doesn't like the image the qrcode spits out
@@ -184,4 +184,4 @@ def create_thumbnail(path, file_, size):
         im.thumbnail(size)
         im.save(join(path, 'thumbs', file_), "JPEG")
     except IOError:
-        print "Cannot create thumbnail for " + join(path, 'thumbs', file_)
+        print("Cannot create thumbnail for " + join(path, 'thumbs', file_))
