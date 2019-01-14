@@ -120,6 +120,8 @@ Uploads the file to dropbox via the APIv2
 def run_dropbox_upload():
     # Wait until dropbox is active
     while (globals_.logged_on == False):
+        if globals_.shutdown_request:
+            return
         print('Dropbox not logged in. Retrying in 10 seconds.')
         sleep(10)
 
